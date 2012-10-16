@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<terrains>
+	<terrain>
+		<name>Arctic</name>
+		<feature></feature>
+		<special></special>
+	</terrain>
+	<terrain>
+		<name>Urban</name>
+		<feature></feature>
+		<special></special>
+	</terrain>
+	<terrain>
+		<name>Plain</name>
+		<feature></feature>
+		<special></special>
+	</terrain>
+	<terrain>
+		<name>Mountain</name>
+		<feature></feature>
+		<special></special>
+	</terrain>
+	<terrain>
+		<name>Overgrown</name>
+		<feature></feature>
+		<special></special>
+	</terrain>
+	<terrain>
+		<name>Volcanic</name>
+		<feature></feature>
+		<special></special>
+	</terrain>
+</terrains>
