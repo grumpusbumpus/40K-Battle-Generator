@@ -1,4 +1,57 @@
-//	Roll D6
+/**
+ *
+ *	TODO:	Function to generate terrain features
+ *
+ */
+
+/**
+ *
+ *	TODO:	Function to generate objectives
+ *
+ */
+
+/**
+ *
+ *	TODO:	Function to generate mission
+ *
+ */
+
+/**
+ *
+ *	TODO:	Function to add tooltip to a piece of text
+ *
+ */
+ 
+ /**
+ *
+ *	TODO:	Function to generate terrain densities
+ *
+ */
+ 
+/**
+ *
+ *	TODO:	Function to assign terrain features
+ *
+ */ 
+
+/**
+ *
+ *	TODO:	Function to generate deployment zones
+ *
+ */ 
+ 
+/**
+ *
+ *	TODO:	Function to reset opacities on mouseover/click for each column
+ *
+ */ 
+ 
+/**
+ *
+ *	Function to roll D6s
+ *
+ */
+ 
 function rollD6(number)
 {
 	var total = 0;
@@ -13,7 +66,12 @@ function rollD6(number)
 	return total;
 }
 
-//	Roll D3
+/**
+ *
+ *	Function to roll D3s
+ *
+ */
+ 
 function rollD3(number)
 {
 	var total = 0;

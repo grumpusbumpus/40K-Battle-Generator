@@ -6,7 +6,8 @@ button{
 	padding: 8px 14px 10px; 
 	background-color: #C49430; 
 	border: none; 
-	margin-right: 25px; 
+	margin-right: 25px;
+	margin-bottom: 10px;
 	position: relative;
 	-webkit-user-select: none;
 	-webkit-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -61,15 +62,24 @@ img.centered{
 }
 
 #content {
-	height: 405px;
+	height: 450px;
 }
 #sidebar {
-	height: 405px;
+	height: 450px;
+}
+#middle {
+	height: 450px;
 }
 
 #header, #footer, #content, #middle, #sidebar {
 	opacity:0.90;
-}	
+}
+#footer {
+	text-align: center;
+}
+#battlefield {
+	opacity:1.0;
+}
 
 /**************************
 Styles for the Tooltip 
@@ -79,10 +89,22 @@ Styles for the Tooltip
 #text {margin:50px auto; width:500px}
 .hotspot {color:#900; padding-bottom:1px; border-bottom:1px dotted #900; cursor:pointer}
 
+#tt {position:absolute; display:block;}
+#ttcont {
+	display:block; 
+	padding:2px 12px 3px 7px; 
+	margin-left:5px; 
+	background:#666; 
+	color:#FFF;
+	border-radius: 15px;}
+
+
+/*
 #tt {position:absolute; display:block; background:url(../images/tt_left.gif) top left no-repeat}
 #tttop {display:block; height:5px; margin-left:5px; background:url(../images/tt_top.gif) top right no-repeat; overflow:hidden}
 #ttcont {display:block; padding:2px 12px 3px 7px; margin-left:5px; background:#666; color:#FFF}
 #ttbot {display:block; height:5px; margin-left:5px; background:url(../images/tt_bottom.gif) top right no-repeat; overflow:hidden}
+*/
 
 /********************************
 Responsive CSS for three columns
@@ -265,6 +287,7 @@ MEDIA QUERIES
 
 #pagewrap, #header, #content, #middle, #sidebar, #footer {
 	border: solid 1px #ccc;
+	border-radius: 15px;
 }
 
 img {

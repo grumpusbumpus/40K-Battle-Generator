@@ -21,9 +21,8 @@
 	</div>
 
 	<div id="content">
-		<h2>Fighting the Battle</h2>
+		<h2>Order of Battle</h2>
 		<div>
-			<h4>Test Div</h4>
 			<p><button onclick="document.getElementById('d6').innerHTML=rollD6();">Roll a D6!</button>
 			<span id="d6" class="dice"> &nbsp </span></p>
 			<p><button onclick="document.getElementById('d3').innerHTML=rollD3();">Roll a D3!</button>
@@ -69,7 +68,9 @@
 	
 	<div id="middle">
 		<h2>The Battlefield</h2>
-		<img class="centered" src="images/battlefield.jpg"/>
+		<div id="battlefield">
+			<img class="centered" src="images/battlefield.jpg"/>
+		</div>
 	</div>
 
 	<div id="sidebar">
