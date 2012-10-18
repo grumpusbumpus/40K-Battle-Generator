@@ -1,6 +1,33 @@
 /**
  *
+ *	TODO:	Establish Global Variables
+ *
+ */
+ 
+ var player_count = 0;	//	The number of players in the game
+ var game_size = "";	//	How large the game is, to determine battlefield size
+ var mission_typ = "";	//	Standard vs. Special Missions
+
+/**
+ *
+ *	TODO:	Function to Initialize on page load
+ *
+ */ 
+
+function init()
+{
+	add_tooltips();
+}
+ 
+/**
+ *
  *	TODO:	Function to generate terrain features
+ *
+ */
+ 
+ /**
+ *
+ *	TODO:	Function to generate battlefield map
  *
  */
 
@@ -15,12 +42,40 @@
  *	TODO:	Function to generate mission
  *
  */
+ 
+ function gen_mission()
+ {
+	if(game_size=='small')
+	{
+		
+	}
+	else
+	{
+		
+	}
+ }
 
 /**
  *
  *	TODO:	Function to add tooltip to a piece of text
  *
  */
+ 
+function add_tooltips()
+{
+	var tips = document.getElementsByTagName("span");
+	for(var term, tip, i = 0; i < tips.length; i++)
+	{
+		term = tips.item(i);
+		tip = term.getAttribute("tip");
+		if(tip != "")
+		{
+			term.setAttribute("onmouseover","tooltip.show('"+tip+"');");
+			term.setAttribute("onmouseout","tooltip.hide();");
+			term.setAttribute("class","tip");
+		}
+	}
+}
  
  /**
  *
@@ -45,6 +100,29 @@
  *	TODO:	Function to reset opacities on mouseover/click for each column
  *
  */ 
+ 
+/**
+ *
+ *	Function to display hidden elements
+ *
+ */ 
+ 
+function show(el_id)
+{
+	document.getElementById(el_id).style.display='inline';
+}
+ 
+ /**
+ *
+ *	Function to hide displayed elements
+ *
+ */ 
+ 
+function hide(el_id)
+{
+	document.getElementById(el_id).style.display='none';
+}
+ 
  
 /**
  *

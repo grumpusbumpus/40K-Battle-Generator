@@ -1,0 +1,14 @@
+changes:
+-font for buttons changed
+-hover value for buttons added
+-div visibility changed
+-body height set, so background is preserved
+-show/hide functions written
+-divs assigned ids
+-eliminated thin borders
+-corrected coverage of background image for all page widths
+-Created canvas for foggy, non-descript battlefield
+-Created border for battlefield canvas
+-Played with CSS till I could line up the battlefield canvas with the border I created
+-Finished and tested the function for adding tooltips to text.
+-pimped out buttons with tranparent overlay and more rounded corners
