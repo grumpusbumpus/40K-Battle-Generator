@@ -1,4 +1,5 @@
 // Painting fog onto the canvas
+
 var count = 6;
 var fog = new Raster('fog');
 var symbol = new Symbol(fog);

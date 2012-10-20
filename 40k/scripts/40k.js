@@ -4,56 +4,235 @@
  *
  */
  
- var player_count = 0;	//	The number of players in the game
- var game_size = "";	//	How large the game is, to determine battlefield size
- var mission_typ = "";	//	Standard vs. Special Missions
+ var player_count;	//	The number of players in the game
+ var faction_count;	//	How many sides are fighting in the battle (2 or 4);
+ var game_size;	//	How large the game is, to determine battlefield size
 
 /**
  *
- *	TODO:	Function to Initialize on page load
+ *	Function to Initialize on page load
  *
  */ 
 
 function init()
 {
 	add_tooltips();
+	step1();
 }
  
 /**
  *
- *	TODO:	Function to generate terrain features
+ *	Step1: Ask for number of players
+ *
+ */
+ 
+function step1()
+{
+	show("step1");
+}
+ 
+/**
+ *
+ *	Step2: Ask for number of factions
+ *
+ */
+ 
+function step2(players)
+{
+	player_count = players;
+	hide("step1");
+	if(player_count == 4)
+	{
+		show("step2");
+	}
+	else
+	{
+		step3(2);
+	}
+	
+}
+ 
+ /**
+ *
+ *	Step3: Ask for game size
+ *
+ */
+ 
+function step3(factions)
+{
+	faction_count = factions;
+	hide("step2");
+	show("step3");
+	if(faction_count == 2)
+	{
+		var button = document.createElement('button');
+		button.setAttribute('id','3button1');
+		button.innerHTML='Less than 500 points';
+		button.setAttribute('onclick','step4(0);');
+		document.getElementById("step3").appendChild(button);
+		
+		button = document.createElement('button');
+		button.setAttribute('id','3button2');
+		button.innerHTML='500 points';
+		button.setAttribute('onclick','step4(1);');
+		document.getElementById("step3").appendChild(button);
+		
+		button = document.createElement('button');
+		button.setAttribute('id','3button3');
+		button.innerHTML='More than 500 points';
+		button.setAttribute('onclick','step4(2);');
+		document.getElementById("step3").appendChild(button);
+	}
+	else
+	{
+		var button = document.createElement('button');
+		button.setAttribute('id','3button1');
+		button.innerHTML='Less than 500 points';
+		button.setAttribute('onclick','step4(0);');
+		document.getElementById("step3").appendChild(button);
+		
+		button = document.createElement('button');
+		button.setAttribute('id','3button2');
+		button.innerHTML='500 points';
+		button.setAttribute('onclick','step4(1);');
+		document.getElementById("step3").appendChild(button);
+	}
+}
+ 
+ /**
+ *
+ *	TODO:	Step 4: Ask for Mission Preference
+ *
+ */
+
+function step4(g_size)
+{
+	game_size = g_size;
+	hide("step3");
+	show("step4");
+	if(game_size < 2)
+	{
+		shrink_battlefield();
+		hide("the_mission");
+		hide("classified");
+	}
+	if(game_size == 0)
+	{
+		show("suicide_mission");
+		step5();
+	}
+	else if(game_size == 1)
+	{
+		show("battleforce_recon");
+		step5();
+	}
+}
+
+ /**
+ *
+ *	TODO:	Step 5: Generate Random Mission
+ *
+ */
+ 
+function step5(mission_type)
+{
+	hide("the_mission");
+	hide("classified");
+	hide("step4");
+	show("step5");
+	if(game_size = 2)
+	{
+		if(mission_type == 0) // Standard Mission
+		{
+			var roll = rollD6();
+			switch(roll)
+			{
+				case 1:
+					show('crusade');
+					break;
+				case 2:
+					show('purge_the_alien');
+					break;
+				case 3:
+					show('big_guns_never_tire');
+					break;
+				case 4:
+					show('the_scouring');
+					break;
+				case 5:
+					show('the_emperors_will');
+					break;
+				case 6:
+					show('the_relic');
+					break;
+			}
+		}
+		else // Special Mission
+		{
+			
+		}
+	}
+	step6();
+}
+
+ /**
+ *
+ *	TODO:	Step 6: Profit?
+ *
+ */
+ 
+function step6()
+{
+	
+}
+
+ /**
+ *
+ *	TODO:	Shrink Battlefield
+ *
+ */
+
+function shrink_battlefield()
+{
+	document.getElementById("battlefield").setAttribute("height","240");
+	document.getElementById("battlefield").setAttribute("style","margin-top: 25%;");
+}
+ 
+ /**
+ *
+ *	TODO:	Step5
  *
  */
  
  /**
  *
- *	TODO:	Function to generate battlefield map
- *
- */
-
-/**
- *
- *	TODO:	Function to generate objectives
- *
- */
-
-/**
- *
- *	TODO:	Function to generate mission
+ *	TODO:	Step6
  *
  */
  
- function gen_mission()
- {
-	if(game_size=='small')
-	{
-		
-	}
-	else
-	{
-		
-	}
- }
+ /**
+ *
+ *	TODO:	Step7
+ *
+ */
+ 
+ /**
+ *
+ *	TODO:	Step8
+ *
+ */
+ 
+ /**
+ *
+ *	TODO:	Step9
+ *
+ */
+ 
+ /**
+ *
+ *	TODO:	Step10
+ *
+ */
 
 /**
  *

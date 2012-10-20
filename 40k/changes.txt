@@ -1,7 +1,4 @@
--added sci-fi border images to the important divs
--swapped out the border image for the canvas
--created background image with appropriate coloration to complement background image
--Changed font to white for important divs
--Changed font for tooltips in order to also be different from white but visible on background
--Fixed the colors for clicking on the buttons
--*** width resizing messed up somehow by the borders, need to look at...
+-added "shrink battlefield" function to adjust canvas size
+-added functionality for displaying mission rules
+-adjusted process flow functions
+-changed CSS to correct improper responsive design behavior

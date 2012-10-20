@@ -175,6 +175,27 @@ STRUCTURE
 	padding: 0 15px;
 }
 
+/**********************************
+Experimenting with background image
+**********************************/
+
+#content,#middle,#sidebar,#header,#footer {
+	color: #fff;
+	background: #f8f8f8 url('../images/blue_tile.jpg');
+	border-image: url('../images/vent.jpg') 30 30 stretch;
+	border-width: 20px;
+}
+#content {
+	width: 250px;
+}
+#middle {
+width: 254px;
+}
+#sidebar {
+	width: 230px;
+}
+
+
 /************************************************************************************
 MEDIA QUERIES
 *************************************************************************************/
@@ -185,11 +206,11 @@ MEDIA QUERIES
 		width: 94%;
 	}
 	#content {
-		width: 41%;
+		width: 35%;
 		padding: 1% 4%;
 	}
 	#middle {
-		width: 41%;
+		width: 35%;
 		padding: 1% 4%;
 		margin: 0px 0px 5px 5px;
 		float: right;
@@ -208,16 +229,10 @@ MEDIA QUERIES
 	h1 {
 		font-size: 24px;
 	}
-	#battlefield {
-		left: 25px;
-	}
-	#battlefield_border {
-		left:4px;
-	}
-	
 }
 
-/* for 800px or less 
+/* for 800px or less */
+/*
 @media screen and (max-width: 800px) {
 	
 	#pagewrap {
@@ -241,8 +256,9 @@ MEDIA QUERIES
 }
 */
 
+
 /* for 700px or less */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 
 	#content {
 		width: auto;
@@ -262,23 +278,7 @@ MEDIA QUERIES
 	h1 {
 		font-size: 24px;
 	}
-	#battlefield {
-		left: 21px;
-	}
-	#battlefield_border {
-		left:0px;
-	}
 
-}
-
-/* for 600px or less */
-@media screen and (max-width: 600px) {
-	#battlefield {
-		left: 121px;
-	}
-	#battlefield_border {
-		left:100px;
-	}
 }
 
 /* for 480px or less */
@@ -287,61 +287,15 @@ MEDIA QUERIES
 	#header {
 		height: auto;
 	}
-	h1 {
-		font-size: 24px;
-	}
-	#sidebar {
-		display: none;
-	}
-	#battlefield {
-		left: 71px;
-	}
-	#battlefield_border {
-		left:50px;
-	}
 
 }
 
 /* border & guideline (you can ignore these) */
-#content {
-	background: #f8f8f8;
-}
-#middle {
-	background: #f8f8f8;
-}
-#header {
-	background: #f8f8f8;
-}
-#footer{
-	background: #f8f8f8;
-}
-#sidebar {
-	background: #f8f8f8;
-}
+
 #header, #content, #middle, #sidebar {
 	margin-bottom: 5px;
 }
 
 #pagewrap, #header, #content, #middle, #sidebar, #footer {
 	border-radius: 15px;
-}
-
-/**********************************
-Experimenting with background image
-**********************************/
-
-#content,#middle,#sidebar,#header,#footer {
-	color: #fff;
-	background: #f8f8f8 url('../images/blue_tile.jpg');
-	border-image: url('../images/vent.jpg') 30 30 stretch;
-	border-width: 20px;
-}
-#content {
-	width: 250px;
-}
-#middle {
-width: 254px;
-}
-#sidebar {
-	width: 230px;
 }

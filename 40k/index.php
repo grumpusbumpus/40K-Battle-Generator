@@ -20,27 +20,28 @@
 
 	<div id="content">
 		<h2>Order of Battle</h2>
-		<div id="step1">
+		<div id="step1" class="hidden">
 			<h3>Number of Players</h3>
 			<p>How many players are playing?</p>
-			<button onclick="show('step2');hide('step1');player_count=2;">2</button>
-			<button onclick="show('step2');hide('step1');player_count=3;">3</button>
-			<button onclick="show('step2');hide('step1');player_count=4;">4</button>
+			<button onclick="step2(2);">2</button>
+			<button onclick="step2(3);">3</button>
+			<button onclick="step2(4);">4</button>
 		</div>
 		<div id="step2" class="hidden">
-			<h3>Build Armies</h3>
-			<p>Each <span tip="Two or more players fighting on the same side are considered a faction.">faction's</span> army is built with how many points?</p>
-			<button onclick="game_size='small';hide('step2');show('step3');">500 Points or Less</button>
-			<button onclick="game_size='large';hide('step2');show('step3');">More than 500 Points</button>
+			<h3>Number of Factions</h3>
+			<p>How many <span tip="Two or more players fighting on the same side are considered a faction.">factions</span> are fighting?</p>
+			<button onclick="step3(2);">2</button>
+			<button onclick="step3(4);">4</button>
 		</div>
 		<div id="step3" class="hidden">
-			<h3>Generate Mission</h3>
-			<p>Are you playing a standard or special mission?</p>
-			<button onclick="gen_mission('standard')">Standard Mission</button>
-			<button onclick="gen_mission('special')">Special Mission</button>
+			<h3>Build Armies</h3>
+			<p>Each <span tip="Two or more players fighting on the same side are considered a faction.">faction's</span> army is built with how many points?</p>
 		</div>
 		<div id="step4" class="hidden">
-			<h3>Generate Deployment Style</h3>
+			<h3>Generate Mission</h3>
+			<p>Are you playing a standard or special mission?</p>
+			<button onclick="step5(0);">Standard Mission</button>
+			<button onclick="step5(1);">Special Mission</button>
 		</div>
 		<div id="step5" class="hidden">
 			<h3>Deploy Fortifications</h3>
@@ -64,34 +65,121 @@
 	
 	<div id="middle">
 		<h2>The Battlefield</h2>
-		<div class="centered">
 			<canvas id="battlefield" class="centered" width="240px" height="360px"></canvas>
 			<img src="images/fog.png" id="fog" class="hidden"/>
-		</div>
 	</div>
 
 	<div id="sidebar">
-		<h2>The Mission</h2>
-		<div>
+		<h2 id="the_mission">The Mission</h2>
+		<img id="classified" src="images/classified.png" width="200" alt="classified" class="centered"/>
+		
+		<!-- Small Missions -->
+		
+		<div id="suicide_mission" class="hidden">
+			<h2>Suicide Mission</h2>
 			<h3>Special Rules</h3>
-			<div id="special">
-			</div>
-		</div>
-		<div>
 			<h3>Primary Objectives</h3>
-			<div id="primary">
-			</div>
-		</div>
-		<div>
 			<h3>Secondary Objectives</h3>
-			<div id="secondary">
-			</div>
-		</div>
-		<div>
 			<h3>Game Length</h3>
-			<div id="length">
-			</div>
 		</div>
+		<div id="battleforce_recon" class="hidden">
+			<h2>Battleforce Recon</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		
+		<!-- Standard Missions -->
+		
+		<div id="crusade" class="hidden">
+			<h2>Crusade</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="purge_the_alien" class="hidden">
+			<h2>Purge the Alien</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="big_guns_never_tire" class="hidden">
+			<h2>Big Guns Never Tire</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="the_scouring" class="hidden">
+			<h2>The Scouring</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="the_emperors_will" class="hidden">
+			<h2>The Emperor's Will</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="the_relic" class="hidden">
+			<h2>The Relic</h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		
+		<!-- Special Missions -->
+		
+		<div id="" class="hidden">
+			<h2></h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="" class="hidden">
+			<h2></h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="" class="hidden">
+			<h2></h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="" class="hidden">
+			<h2></h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="" class="hidden">
+			<h2></h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		<div id="" class="hidden">
+			<h2></h2>
+			<h3>Special Rules</h3>
+			<h3>Primary Objectives</h3>
+			<h3>Secondary Objectives</h3>
+			<h3>Game Length</h3>
+		</div>
+		
 	</div>
 	
 	<div id="footer">
