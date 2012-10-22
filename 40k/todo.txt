@@ -1,0 +1,18 @@
+TODO List
+-Finish fort deploying functionality
+	-Create counter for feedback below button or paragraph
+		-Fed from global variable, updated how? on click?
+	-Keep from stacking forts on top of existing forts
+-Fix night fighting
+	-Add boolean variable for night fight, so rolled just before deployment
+	-Change tooltip to describe effects of night fighting
+-Add div to show battlefield special rules
+	-Night
+	-Mysterious Objectives
+	-Special Terrain
+	-Overall battlefield effects(cold/heat/vacuum)
+-Add mysterious objective clarification in battlefield special rules box
+-Create objective deployment function to generate mission-specific instructions
+-Add function for generating terrain counts and displaying on battlefield
+	-Mouseover to list what terrain features should be deployed?
+	-Place terrain on BF/with tooltip popup describing characteristics

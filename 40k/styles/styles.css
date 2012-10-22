@@ -10,7 +10,7 @@ h1{
 	padding: 15px;}
 h2{
 	text-align: center;
-	padding: 10px;}
+	padding: 5px;}
 h4{
 	text-align: center;
 	padding: 10px;}
@@ -89,7 +89,7 @@ Styles for the Tooltip
 
 * {margin:0; padding:0}
 #text {margin:50px auto; width:500px}
-.tip {color:#FFFF9F; padding-bottom:1px; border-bottom:1px dotted #FFFF9F; cursor:pointer}
+.tip {color:#FFFF9F; padding-bottom:1px; cursor:pointer}
 
 #tt {position:absolute; display:block;}
 #ttcont {
@@ -118,6 +118,7 @@ body {
 }
 p {
 	font-size: 0.90em;
+	padding: 3px;
 }
 a {
 	color: #669;

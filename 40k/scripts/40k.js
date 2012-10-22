@@ -273,8 +273,23 @@ function step7(terrain)
 	}
 	globals.clear_fog();
 	globals.addBattlefield(terrain_type);
+	globals.drawDeployment(faction_count, mission_type);
+	show("step7");
+	globals.addForts = true;	// Allow player to click on map
 }
+
+ /**
+ *
+ *	TODO:	Step8
+ *
+ */
  
+ function step8()
+ {
+	globals.addForts = false;	//Keeps players from adding more forts
+	hide("step7");
+	show("step8");
+ }
 
  /**
  *
@@ -287,26 +302,23 @@ function shrink_battlefield()
 	document.getElementById("battlefield").setAttribute("height","240");
 	document.getElementById("battlefield").setAttribute("style","margin-top: 25%;");
 }
- 
- /**
- *
- *	TODO:	Step5
- *
- */
- 
- /**
- *
- *	TODO:	Step6
- *
- */
- 
 
- 
  /**
  *
- *	TODO:	Step8
+ *	Clear Forts
  *
  */
+
+function clear_forts()
+{
+	for(var i = 1; i < (globals.fortClicks+1); i++)
+	{
+		globals.clearFort(i);
+	}
+	globals.fortClicks = 0;
+	globals.forts = new Array();
+	document.getElementById("fort_count").innerHTML = "0";
+}
  
  /**
  *

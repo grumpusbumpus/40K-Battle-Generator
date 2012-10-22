@@ -1,6 +1,4 @@
--Filled out lots of mission text (small and standard missions) including tooltips
--Changed font size for paragrapsh to 0.9em
--Added battlefield image resources
--Figured out how to access paper components from javascript after lots of frustration
--Built process logic to the point of determining missions and battlefield type
--Built function to remove fog and add in battlefield art
+-tweaked styles to better fit text (padding values)
+-Began working on deployment zone generation/drawing
+-Draws small/standard deployments appropriately
+-Draws middle lines

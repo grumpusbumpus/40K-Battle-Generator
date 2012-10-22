@@ -16,6 +16,7 @@
 
 	<div id="header">
 		<h1>Warhammer 40,000 Battle Generator</h1>
+		<button onclick = "globals.mouseClick=true;">Test Button</button>
 	</div>
 
 	<div id="content">
@@ -70,7 +71,13 @@
 		</div>
 		<div id="step7" class="hidden">
 			<h3>Determine Deployment Zones</h3>
-			<p>Roll off to determine which player may choose his deployment zone.</p>
+			<p><span tip="The player who rolls highest determines the order in which all players may choose their deployment zones.">Roll off</span> to determine which player may choose a deployment zone first.</p>
+			<h3>Deploy Fortifications</h3>
+			<p>After choosing deployment zones, the player who chose a deployment zone first <span tip="Fortifications must be deployed totally within their owner\'s half of the battlefield.  They must be 3 inches away from any other fortification. ">deploys</span> his or her fortification (if any), followed by the other players, in order.  Click on the map to indicate where fortifications have been deployed.</p>
+			<h3>Number of Fortifications:</h3>
+			<div id="fort_count">0</div>
+			<button onclick="step8();">Done Deploying Fortifications</button>
+			<button onclick="clear_forts();">Reset Fortifications</button>
 		</div>
 		<div id="step8" class="hidden">
 			<h3>Determine Warlord Traits</h3>
