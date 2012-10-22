@@ -7,6 +7,10 @@
  var player_count;	//	The number of players in the game
  var faction_count;	//	How many sides are fighting in the battle (2 or 4);
  var game_size;	//	How large the game is, to determine battlefield size
+ var objective_count; // How many objectives the scenario requires
+ var mission_type;	// Small (0) Standard (1) or Special Mission (2)
+ var mission_num;	// Which mission was selected
+ var terrain_type;	// Which sort of battlefield is being fought on
 
 /**
  *
@@ -16,8 +20,8 @@
 
 function init()
 {
-	add_tooltips();
-	step1();
+	add_tooltips();	// Add popup text across the page
+	step1(); //	Start the battle generation process
 }
  
 /**
@@ -101,7 +105,7 @@ function step3(factions)
  
  /**
  *
- *	TODO:	Step 4: Ask for Mission Preference
+ *	Step 4: Ask for Mission Type Preference
  *
  */
 
@@ -113,82 +117,168 @@ function step4(g_size)
 	if(game_size < 2)
 	{
 		shrink_battlefield();
-		hide("the_mission");
-		hide("classified");
 	}
 	if(game_size == 0)
 	{
 		show("suicide_mission");
-		step5();
+		mission_num = 0;
+		objective_count = 4;
+		step5(0);
 	}
 	else if(game_size == 1)
 	{
 		show("battleforce_recon");
-		step5();
+		mission_num = 1;
+		objective_count = 4;
+		step5(0);
 	}
 }
 
  /**
  *
- *	TODO:	Step 5: Generate Random Mission
+ *	TODO:	Step 5: Ask for Mission Preference
  *
  */
  
-function step5(mission_type)
+function step5(type)
+{
+	mission_type = type;
+	hide("step4");
+	switch(mission_type)
+	{
+		case 0:
+			step6();
+			break;
+		case 1:
+			show("step5a");
+			break;
+		case 2:
+			show("step5b");
+			break;
+	}
+}
+
+ /**
+ *
+ *	TODO:	Step 6: Generate Random Mission and ask for Terrain Preference
+ *
+ */
+ 
+function step6(number)
 {
 	hide("the_mission");
 	hide("classified");
-	hide("step4");
-	show("step5");
-	if(game_size = 2)
+	if (number == 0)
 	{
-		if(mission_type == 0) // Standard Mission
-		{
-			var roll = rollD6();
-			switch(roll)
+		number = rollD6();
+	}
+	switch(mission_type)
+	{
+		case 0:	// Small Mission
+			break;
+		case 1:	//Standard Mission
+			hide("step5a");
+			switch(number)
 			{
 				case 1:
 					show('crusade');
+					mission_num = 1;
+					objective_count = rollD3() + 2;
 					break;
 				case 2:
 					show('purge_the_alien');
+					mission_num = 2;
 					break;
 				case 3:
 					show('big_guns_never_tire');
+					mission_num = 3;
+					objective_count = rollD3() + 2;
 					break;
 				case 4:
 					show('the_scouring');
+					mission_num = 4;
+					objective_count = 6;
 					break;
 				case 5:
 					show('the_emperors_will');
+					mission_num = 5;
+					objective_count = 2;
 					break;
 				case 6:
 					show('the_relic');
+					mission_num = 6;
 					break;
 			}
-		}
-		else // Special Mission
-		{
-			
-		}
+			break;
+		case 2:	// Special Mission
+			hide("step5b");
+			switch(number)
+			{
+				case 1:
+					show('the_pact_of_blood');
+					mission_num = 1;
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+			}
 	}
-	step6();
-}
-
- /**
- *
- *	TODO:	Step 6: Profit?
- *
- */
- 
-function step6()
-{
+	show("step6");	// Show terrain question
 	
 }
 
  /**
  *
- *	TODO:	Shrink Battlefield
+ *	TODO:	Step 7: Generate Terrain and Deployment Zones
+ *
+ */
+ 
+function step7(terrain)
+{
+	hide("step6")
+	if(terrain=="random")
+	{
+		switch(rollD6())
+		{
+			case 1:
+				terrain_type = "arctic";
+				break;
+			case 2:
+				terrain_type = "plain";
+				break;
+			case 3:
+				terrain_type = "urban";
+				break;
+			case 4:
+				terrain_type = "overgrown";
+				break;
+			case 5:
+				terrain_type = "rugged";
+				break;
+			case 6:
+				terrain_type = "volcanic";
+				break;
+		}
+	}
+	else
+	{
+		terrain_type = terrain;
+	}
+	globals.clear_fog();
+	globals.addBattlefield(terrain_type);
+}
+ 
+
+ /**
+ *
+ *	Shrink Battlefield
  *
  */
 
@@ -210,11 +300,7 @@ function shrink_battlefield()
  *
  */
  
- /**
- *
- *	TODO:	Step7
- *
- */
+
  
  /**
  *
@@ -354,10 +440,10 @@ function rollD3(number)
 var tooltip=function(){
 	var id = 'tt';
 	var top = 3;
-	var left = 3;
-	var maxw = 300;
-	var speed = 10;
-	var timer = 20;
+	var left = -100;	// Originally 3
+	var maxw = 200;	// Originally 300
+	var speed = 30;
+	var timer = 10;
 	var endalpha = 95;
 	var alpha = 0;
 	var tt,t,c,b,h;
