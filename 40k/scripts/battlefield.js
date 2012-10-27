@@ -200,7 +200,9 @@ function onMouseUp(event)
 		//Draw Fort on map
 		spot.x = spot.x + 0.5;
 		spot.y = spot.y + 0.5;
-		globals.forts[globals.fortClicks] = new Path.Circle(spot*60, 10);
-		globals.forts[globals.fortClicks].fillColor = 'black';
+		globals.forts[globals.fortClicks] = new Raster('bastion');
+		globals.forts[globals.fortClicks].position = new Point(spot*60);
+		var rotation = Math.random()*360;
+		globals.forts[globals.fortClicks].rotate(rotation);
 	}
 }

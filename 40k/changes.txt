@@ -1,4 +1,0 @@
--tweaked styles to better fit text (padding values)
--Began working on deployment zone generation/drawing
--Draws small/standard deployments appropriately
--Draws middle lines

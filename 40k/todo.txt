@@ -8,10 +8,12 @@ TODO List
 	-Change tooltip to describe effects of night fighting
 -Add div to show battlefield special rules
 	-Night
-	-Mysterious Objectives
+	-Mysterious Objectives button? - Have it attached to map?
+	-Mysterious terrain button?
 	-Special Terrain
 	-Overall battlefield effects(cold/heat/vacuum)
--Add mysterious objective clarification in battlefield special rules box
+-Add mysterious objective generation in battlefield special rules box
+-Add mysterious terrain generation into battlefield
 -Create objective deployment function to generate mission-specific instructions
 -Add function for generating terrain counts and displaying on battlefield
 	-Mouseover to list what terrain features should be deployed?
