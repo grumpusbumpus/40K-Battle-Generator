@@ -1,0 +1,25 @@
+Rules for terrain
+
+-overgrown
+	-terrain: growth
+	-features: growth terrain is dangerous?
+
+-urban
+	-terrain: structure
+	-features
+
+-plain
+	-terrain: debris
+	-features
+
+-volcanic
+	-terrain: pool
+	-features: hot
+
+-arctic
+	-terrain: pool
+	-features: cold
+
+-rugged
+	-terrain: hill
+	-feature:

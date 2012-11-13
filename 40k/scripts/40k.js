@@ -3,21 +3,38 @@
  *	TODO:	Establish Global Variables
  *
  */
- 
+ window.globals = {};	//Necessary for accessing Paper components via JavaScript
+ globals.density = new Array();	//	Tracking terrain density on the battlefield
+ globals.density[0] = new Array();
+ globals.density[1] = new Array();
+ globals.game_size;	//	How large the game is, to determine battlefield size
  var player_count;	//	The number of players in the game
  var faction_count;	//	How many sides are fighting in the battle (2 or 4);
- var game_size;	//	How large the game is, to determine battlefield size
  var objective_count; // How many objectives the scenario requires
  var mission_type;	// Small (0) Standard (1) or Special Mission (2)
  var mission_num;	// Which mission was selected
  var terrain_type;	// Which sort of battlefield is being fought on
 
+
+
 /**
+ *
+ *	Testing
+ *
+ */ 
+
+function test()
+{
+	console.log("(0,0): " + globals.density[0][0] + "(1,0): " + globals.density[1][0] + '\n'
+	+ "(0,1): " + globals.density[0][1] + "(1,1): " + globals.density[1][1] + '\n'
+	+ "(0,2): " + globals.density[0][2] + "(1,2): " + globals.density[1][2]);
+}
+ /**
  *
  *	Function to Initialize on page load
  *
  */ 
-
+ 
 function init()
 {
 	add_tooltips();	// Add popup text across the page
@@ -111,21 +128,28 @@ function step3(factions)
 
 function step4(g_size)
 {
-	game_size = g_size;
+	globals.game_size = g_size;
 	hide("step3");
 	show("step4");
-	if(game_size < 2)
+	if(globals.game_size < 2)
 	{
 		shrink_battlefield();
+		globals.density[0] = [0,0];
+		globals.density[1] = [0,0];
 	}
-	if(game_size == 0)
+	else
+	{
+		globals.density[0] = [0,0,0];
+		globals.density[1] = [0,0,0];
+	}
+	if(globals.game_size == 0)
 	{
 		show("suicide_mission");
 		mission_num = 0;
 		objective_count = 4;
 		step5(0);
 	}
-	else if(game_size == 1)
+	else if(globals.game_size == 1)
 	{
 		show("battleforce_recon");
 		mission_num = 1;
@@ -289,6 +313,56 @@ function step7(terrain)
 	globals.addForts = false;	//Keeps players from adding more forts
 	hide("step7");
 	show("step8");
+	
+	//Generate Terrain Density
+	for(var i = 0; i < 2; i++)
+	{
+		if(globals.game_size < 2)
+		{
+			var height = 2;
+		}
+		else
+		{
+			var height = 3;
+		}
+		for (var j = 0; j < height; j++)
+		{
+			globals.density[i][j] += rollD3();
+		}
+	}
+	
+	//Draw Density Markers
+	for(var i = 0; i < 2; i++)
+	{
+		if(globals.game_size < 2)
+		{
+			var height = 2;
+		}
+		else
+		{
+			var height = 3;
+		}
+		for (var j = 0; j < height; j++)
+		{
+			var number = globals.density[i][j];
+			var x = (i*120)+60;
+			var y = (j*120)+60;
+			switch(number)
+			{
+				case 1:
+					globals.draw_terrain('density_1',x,y);
+					break;
+				case 2:
+					globals.draw_terrain('density_2',x,y);
+					break;
+				case 3:
+					globals.draw_terrain('density_3',x,y);
+					break;
+				default:
+					break;
+			}
+		}
+	}
  }
 
  /**

@@ -1,15 +1,17 @@
-window.globals = {};	//Necessary for accessing Paper components via JavaScript
 globals.addForts = false;	// Whether or not forts can be added to battlefield
 globals.fortClicks = 0;
 globals.forts = new Array();	// Information about battlefield fortifications
 globals.fortLocations = new Array();
+globals.terrain = new Array;
+
+
 
 // Fog
 var count = 6;
 var spin = 1;
 globals.placedSymbol = new Array();
 fog = new Raster('fog');
-fog.opacity = 0.5;
+fog.opacity = 0.2;
 symbol = new Symbol(fog);
 
 // Place fog on the map
@@ -172,13 +174,41 @@ globals.clearCanvas = function()	//Works!!!
 
  /**
  *
- *	Clear Fortifications from the Map
+ *	Draw Terrain on map
  *
  */
+ 
+globals.draw_terrain = function(id, x, y)
+{
+	var feature = globals.terrain.length;
+	globals.terrain[feature] = new Raster(id);
+	var rotation = Math.random()*360;
+	globals.terrain[feature].position = new Point(x,y);
+	globals.terrain[feature].rotate(rotation);
+}
 
+ /**
+ *
+ *	Clear Fortifications from the Map
+ *
+ */ 
+ 
 globals.clearFort = function(number)
 {
 	globals.forts[number].remove();
+	globals.density = new Array();	//	Tracking terrain density on the battlefield
+	globals.density[0] = new Array();
+	globals.density[1] = new Array();
+	if(globals.game_size < 2)
+	{
+		globals.density[0] = [0,0];
+		globals.density[1] = [0,0];
+	}
+	else
+	{
+		globals.density[0] = [0,0,0];
+		globals.density[1] = [0,0,0];
+	}
 }
 
 
@@ -190,6 +220,15 @@ function onMouseUp(event)
 	{
 		//Track fort location
 		var spot = new Point(event.point);
+		
+		/******************************
+		For calculating terrain density
+		******************************/
+		var density_x = Math.floor(spot.x/120);
+		var density_y = Math.floor(spot.y/120);
+		globals.density[density_x][density_y] -= 1;
+		/*****************************/
+		
 		spot = spot/60;
 		spot.x = Math.floor(spot.x);
 		spot.y = Math.floor(spot.y);

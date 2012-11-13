@@ -1,0 +1,2 @@
+-Moved globals variable to 40k.js file
+-
