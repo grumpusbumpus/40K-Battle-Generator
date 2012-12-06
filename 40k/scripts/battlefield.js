@@ -176,13 +176,25 @@ globals.clearCanvas = function()	//Works!!!
  *
  *	Draw Terrain on map
  *
+ *	id = CSS id of image to draw
+ *	x,y = coordinates to draw on canvas
+ *	r = how many degrees to rotate image (negative value for random)
+ *
  */
  
-globals.draw_terrain = function(id, x, y)
+globals.draw_terrain = function(id, x, y, r)
 {
+	var rotation;
 	var feature = globals.terrain.length;
 	globals.terrain[feature] = new Raster(id);
-	var rotation = Math.random()*360;
+	if(r<0)
+	{
+		rotation = Math.random()*360;
+	}
+	else
+	{
+		rotation = r;
+	}
 	globals.terrain[feature].position = new Point(x,y);
 	globals.terrain[feature].rotate(rotation);
 }

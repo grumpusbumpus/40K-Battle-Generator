@@ -260,7 +260,7 @@ function step6(number)
 
  /**
  *
- *	TODO:	Step 7: Generate Terrain and Deployment Zones
+ *	TODO:	Step 7: Generate Terrain Type and Deployment Zones
  *
  */
  
@@ -350,13 +350,13 @@ function step7(terrain)
 			switch(number)
 			{
 				case 1:
-					globals.draw_terrain('density_1',x,y);
+					globals.draw_terrain('density_1',x,y,0);
 					break;
 				case 2:
-					globals.draw_terrain('density_2',x,y);
+					globals.draw_terrain('density_2',x,y,0);
 					break;
 				case 3:
-					globals.draw_terrain('density_3',x,y);
+					globals.draw_terrain('density_3',x,y,0);
 					break;
 				default:
 					break;

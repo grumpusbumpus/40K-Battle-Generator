@@ -6,11 +6,11 @@ Rules for terrain
 
 -urban
 	-terrain: structure
-	-features
+	-features:
 
 -plain
 	-terrain: debris
-	-features
+	-features:
 
 -volcanic
 	-terrain: pool
@@ -23,3 +23,7 @@ Rules for terrain
 -rugged
 	-terrain: hill
 	-feature:
+	
+Battlefield rules ideas
+-lightning storm
+-...bah

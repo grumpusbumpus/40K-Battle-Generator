@@ -1,0 +1,71 @@
+TERRAIN
+
+debris (5+ cover, difficult, area terrain)
+	1-walls (4+)
+	2-ammo dump (5+)
+	3-comms relay (5+)
+	4-defense line (4+, better than wall...)
+	5-fuel reserve (5+)
+	6-gun emplacement (4+, T7 W2 Sv3+)
+		D6
+		-heavy bolter
+		-autocannon
+		-lascannon
+		-heavy stubber
+		-missile launcher
+		-mortar
+	7-craters (5+)
+	8-Imperial statue (3+)
+	9-shield generators
+	10-chaos shrine (4+)
+	11-tangle wire (6+, dangerous)
+	12-tank traps (4+, impassable to vehicles)
+	13-trenches (4+)
+	14-wreckage (5+)
+	15-archeotech artifact (mysterious)
+	16-spiker plant
+	17-psychic shield
+	-teleporter
+	-warp rift
+	
+
+structures
+
+	D3
+	-small (6x6)
+	-medium (9x9)
+	-large (12x12)
+	
+	D3
+	-ruin (4+ cover, difficult, area terrain)
+	-building
+		D6
+		-AV 9	(shack)
+		-AV 10	(wood)
+		-AV 11	(brick?)
+		-AV 12	(concrete)
+		-AV 13	(palace/steel)
+		-AV 14	(bunker/reinforced)
+	-impassable (to non-flying units)
+		-can be landed on?
+
+pools (5+ cover, difficult, area terrain)
+	
+	D3
+	-regular
+	-dangerous
+	-impassable
+
+growths (5+ cover, difficult, area terrain?)
+
+	D3
+	-regular
+	-dangerous
+	-impassible
+	
+hills (4+ cover if behind)
+	
+	D3
+	-smooth
+	-difficult
+	-impassable
