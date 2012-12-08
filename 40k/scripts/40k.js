@@ -28,6 +28,9 @@ function test()
 	console.log("(0,0): " + globals.density[0][0] + "(1,0): " + globals.density[1][0] + '\n'
 	+ "(0,1): " + globals.density[0][1] + "(1,1): " + globals.density[1][1] + '\n'
 	+ "(0,2): " + globals.density[0][2] + "(1,2): " + globals.density[1][2]);
+	var snd_src = document.getElementById('sound').getAttribute('src');
+	var snd = new Audio(snd_src);
+	snd.play();
 }
  /**
  *
@@ -428,29 +431,13 @@ function add_tooltips()
 	}
 }
  
- /**
- *
- *	TODO:	Function to generate terrain densities
- *
- */
- 
 /**
  *
  *	TODO:	Function to assign terrain features
  *
  */ 
 
-/**
- *
- *	TODO:	Function to generate deployment zones
- *
- */ 
- 
-/**
- *
- *	TODO:	Function to reset opacities on mouseover/click for each column
- *
- */ 
+
  
 /**
  *
@@ -605,6 +592,7 @@ var tooltip=function(){
 */
 function playSound(file)
 {
+	alert('got here'); //testing
 	var snd = new Audio(file); // buffers automatically when created
 	snd.play();
 }
