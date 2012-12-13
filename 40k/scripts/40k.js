@@ -8,6 +8,7 @@
  globals.density[0] = new Array();
  globals.density[1] = new Array();
  globals.game_size;	//	How large the game is, to determine battlefield size
+ globals.terrain_array = new Array();	//	Array for tracking the location of terrain features present on the map
  var player_count;	//	The number of players in the game
  var faction_count;	//	How many sides are fighting in the battle (2 or 4);
  var objective_count; // How many objectives the scenario requires
@@ -25,9 +26,7 @@
 
 function test()
 {
-	console.log("(0,0): " + globals.density[0][0] + "(1,0): " + globals.density[1][0] + '\n'
-	+ "(0,1): " + globals.density[0][1] + "(1,1): " + globals.density[1][1] + '\n'
-	+ "(0,2): " + globals.density[0][2] + "(1,2): " + globals.density[1][2]);
+	console.log("Test button pressed \n");
 	var snd_src = document.getElementById('sound').getAttribute('src');
 	var snd = new Audio(snd_src);
 	snd.play();
@@ -303,6 +302,7 @@ function step7(terrain)
 	globals.drawDeployment(faction_count, mission_type);
 	show("step7");
 	globals.addForts = true;	// Allow player to click on map
+	init_terrain_array();
 }
 
  /**
@@ -390,12 +390,83 @@ function clear_forts()
 {
 	for(var i = 1; i < (globals.fortClicks+1); i++)
 	{
-		globals.clearFort(i);
+		globals.forts[i].remove();
 	}
 	globals.fortClicks = 0;
 	globals.forts = new Array();
 	document.getElementById("fort_count").innerHTML = "0";
+	globals.density = new Array();	//	Tracking terrain density on the battlefield
+	globals.density[0] = new Array();
+	globals.density[1] = new Array();
+	if(globals.game_size < 2)
+	{
+		globals.density[0] = [0,0];
+		globals.density[1] = [0,0];
+	}
+	else
+	{
+		globals.density[0] = [0,0,0];
+		globals.density[1] = [0,0,0];
+	}
+	init_terrain_array();
 }
+
+ /**
+ *
+ *	Initialize terrain_array
+ *
+ */
+function init_terrain_array()
+{
+	globals.terrain_array[0] = new Array();
+	globals.terrain_array[1] = new Array();
+	globals.terrain_array[0][0] = new Array();
+		globals.terrain_array[0][0][0] = new Array();
+			globals.terrain_array[0][0][0][0] = 0;
+			globals.terrain_array[0][0][0][1] = 0;
+		globals.terrain_array[0][0][1] = new Array();
+			globals.terrain_array[0][0][1][0] = 0;
+			globals.terrain_array[0][0][1][1] = 0;
+	globals.terrain_array[1][0] = new Array();
+		globals.terrain_array[1][0][0] = new Array();
+			globals.terrain_array[1][0][0][0] = 0;
+			globals.terrain_array[1][0][0][1] = 0;
+		globals.terrain_array[1][0][1] = new Array();
+			globals.terrain_array[1][0][1][0] = 0;
+			globals.terrain_array[1][0][1][1] = 0;
+	globals.terrain_array[0][1] = new Array();
+		globals.terrain_array[0][1][0] = new Array();
+			globals.terrain_array[0][1][0][0] = 0;
+			globals.terrain_array[0][1][0][1] = 0;
+		globals.terrain_array[0][1][1] = new Array();
+			globals.terrain_array[0][1][1][0] = 0;
+			globals.terrain_array[0][1][1][1] = 0;
+	globals.terrain_array[1][1] = new Array();
+		globals.terrain_array[1][1][0] = new Array();
+			globals.terrain_array[1][1][0][0] = 0;
+			globals.terrain_array[1][1][0][1] = 0;
+		globals.terrain_array[1][1][1] = new Array();
+			globals.terrain_array[1][1][1][0] = 0;
+			globals.terrain_array[1][1][1][1] = 0;
+	if(globals.game_size >= 2)
+	{
+		globals.terrain_array[0][2] = new Array();
+			globals.terrain_array[0][2][0] = new Array();
+				globals.terrain_array[0][2][0][0] = 0;
+				globals.terrain_array[0][2][0][1] = 0;
+			globals.terrain_array[0][2][1] = new Array();
+				globals.terrain_array[0][2][1][0] = 0;
+				globals.terrain_array[0][2][1][1] = 0;
+		globals.terrain_array[1][2] = new Array();
+			globals.terrain_array[1][2][0] = new Array();
+				globals.terrain_array[1][2][0][0] = 0;
+				globals.terrain_array[1][2][0][1] = 0;
+			globals.terrain_array[1][2][1] = new Array();
+				globals.terrain_array[1][2][1][0] = 0;
+				globals.terrain_array[1][2][1][1] = 0;
+	}
+}
+ 
  
  /**
  *
@@ -584,15 +655,3 @@ var tooltip=function(){
 		}
 	};
 }();
-
-/**
-*
-*	Sound Playing function
-*
-*/
-function playSound(file)
-{
-	alert('got here'); //testing
-	var snd = new Audio(file); // buffers automatically when created
-	snd.play();
-}

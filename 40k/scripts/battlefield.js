@@ -1,7 +1,6 @@
 globals.addForts = false;	// Whether or not forts can be added to battlefield
 globals.fortClicks = 0;
 globals.forts = new Array();	// Information about battlefield fortifications
-globals.fortLocations = new Array();
 globals.terrain = new Array;
 
 
@@ -43,11 +42,14 @@ globals.addBattlefield = function(terrain)
 /*
  *
  *	Function to draw deployment zones
+ *	TODO: DRAW THE DEPLOYMENT ZONES ABOVE THE REST OF THE MAP
  *
  */
 
 globals.drawDeployment = function(faction_count, mission_type)
 {
+	var current_layer = project.activeLayer;
+	var deployment_layer = new Layer();
 	var opacity = 0.30;
 	var color1 = new RgbColor(1,0,0);
 	var color2 = new RgbColor(0,0,1);
@@ -55,6 +57,10 @@ globals.drawDeployment = function(faction_count, mission_type)
 	var color4 = new RgbColor(255,255,0);
 	var size1 = new Size(60,360);
 	var size2 = new Size(240,120);
+	
+	//	Moving the deployment layer above the other drawing layer (I hope.  Yep, it works!)
+	deployment_layer.activate();
+	deployment_layer.moveAbove(current_layer);
 		
 	if(mission_type == 0)
 	{		
@@ -164,6 +170,9 @@ globals.drawDeployment = function(faction_count, mission_type)
 		center_line.strokeColor = 'white';
 		center_line.dashArray = [10,4];
 	}
+	
+	//	Return to the regular layer to draw other features
+	current_layer.activate();
 }
 
 globals.clearCanvas = function()	//Works!!!
@@ -199,30 +208,6 @@ globals.draw_terrain = function(id, x, y, r)
 	globals.terrain[feature].rotate(rotation);
 }
 
- /**
- *
- *	Clear Fortifications from the Map
- *
- */ 
- 
-globals.clearFort = function(number)
-{
-	globals.forts[number].remove();
-	globals.density = new Array();	//	Tracking terrain density on the battlefield
-	globals.density[0] = new Array();
-	globals.density[1] = new Array();
-	if(globals.game_size < 2)
-	{
-		globals.density[0] = [0,0];
-		globals.density[1] = [0,0];
-	}
-	else
-	{
-		globals.density[0] = [0,0,0];
-		globals.density[1] = [0,0,0];
-	}
-}
-
 
 //	Handling mouse clicks on the canvas
 
@@ -233,7 +218,7 @@ function onMouseUp(event)
 		//Track fort location
 		var spot = new Point(event.point);
 		
-		/******************************
+		/*****************************
 		For calculating terrain density
 		******************************/
 		var density_x = Math.floor(spot.x/120);
@@ -241,11 +226,20 @@ function onMouseUp(event)
 		globals.density[density_x][density_y] -= 1;
 		/*****************************/
 		
+		
+		/******************************
+		For handling spaces occupied by terrain
+		******************************/
+		var terrain_x = Math.floor((spot.x-(density_x*120))/60);
+		var terrain_y = Math.floor((spot.y-(density_x*120))/60);
+		//Testing
+		console.log("Click: " + terrain_x + ", " + terrain_y);
+		/*****************************/
+		
 		spot = spot/60;
 		spot.x = Math.floor(spot.x);
 		spot.y = Math.floor(spot.y);
 		globals.fortClicks++;
-		globals.fortLocations[globals.fortClicks] = spot;
 		document.getElementById("fort_count").innerHTML = String(globals.fortClicks);
 		
 		//Draw Fort on map
