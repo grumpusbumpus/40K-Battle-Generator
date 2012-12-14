@@ -416,55 +416,18 @@ function clear_forts()
  *	Initialize terrain_array
  *
  */
+ 
 function init_terrain_array()
 {
-	globals.terrain_array[0] = new Array();
-	globals.terrain_array[1] = new Array();
-	globals.terrain_array[0][0] = new Array();
-		globals.terrain_array[0][0][0] = new Array();
-			globals.terrain_array[0][0][0][0] = 0;
-			globals.terrain_array[0][0][0][1] = 0;
-		globals.terrain_array[0][0][1] = new Array();
-			globals.terrain_array[0][0][1][0] = 0;
-			globals.terrain_array[0][0][1][1] = 0;
-	globals.terrain_array[1][0] = new Array();
-		globals.terrain_array[1][0][0] = new Array();
-			globals.terrain_array[1][0][0][0] = 0;
-			globals.terrain_array[1][0][0][1] = 0;
-		globals.terrain_array[1][0][1] = new Array();
-			globals.terrain_array[1][0][1][0] = 0;
-			globals.terrain_array[1][0][1][1] = 0;
-	globals.terrain_array[0][1] = new Array();
-		globals.terrain_array[0][1][0] = new Array();
-			globals.terrain_array[0][1][0][0] = 0;
-			globals.terrain_array[0][1][0][1] = 0;
-		globals.terrain_array[0][1][1] = new Array();
-			globals.terrain_array[0][1][1][0] = 0;
-			globals.terrain_array[0][1][1][1] = 0;
-	globals.terrain_array[1][1] = new Array();
-		globals.terrain_array[1][1][0] = new Array();
-			globals.terrain_array[1][1][0][0] = 0;
-			globals.terrain_array[1][1][0][1] = 0;
-		globals.terrain_array[1][1][1] = new Array();
-			globals.terrain_array[1][1][1][0] = 0;
-			globals.terrain_array[1][1][1][1] = 0;
-	if(globals.game_size >= 2)
+	if(globals.game_size < 2)
 	{
-		globals.terrain_array[0][2] = new Array();
-			globals.terrain_array[0][2][0] = new Array();
-				globals.terrain_array[0][2][0][0] = 0;
-				globals.terrain_array[0][2][0][1] = 0;
-			globals.terrain_array[0][2][1] = new Array();
-				globals.terrain_array[0][2][1][0] = 0;
-				globals.terrain_array[0][2][1][1] = 0;
-		globals.terrain_array[1][2] = new Array();
-			globals.terrain_array[1][2][0] = new Array();
-				globals.terrain_array[1][2][0][0] = 0;
-				globals.terrain_array[1][2][0][1] = 0;
-			globals.terrain_array[1][2][1] = new Array();
-				globals.terrain_array[1][2][1][0] = 0;
-				globals.terrain_array[1][2][1][1] = 0;
+		globals.terrain_array = new Array(16);
 	}
+	else
+	{
+		globals.terrain_array = new Array(24);
+	}
+	
 }
  
  
