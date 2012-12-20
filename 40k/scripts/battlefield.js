@@ -223,17 +223,20 @@ function onMouseUp(event)
 		******************************/
 		var density_x = Math.floor(spot.x/120);
 		var density_y = Math.floor(spot.y/120);
-		globals.density[density_x][density_y] -= 1;
+		var density_index = density_x + (density_y * 2);
+		globals.density[density_index] -= 1;
+		
 		/*****************************/
 		
 		
 		/******************************
 		For handling spaces occupied by terrain
+		TODO: FIX THIS
 		******************************/
-		var terrain_x = Math.floor((spot.x-(density_x*120))/60);
-		var terrain_y = Math.floor((spot.y-(density_x*120))/60);
-		//Testing
-		console.log("Click: " + terrain_x + ", " + terrain_y);
+		var terrain_x = Math.floor(spot.x/60);
+		var terrain_y = Math.floor(spot.y/60);
+		var terrain_index = terrain_x + (terrain_y * 4);
+		globals.terrain_array[terrain_index] = "bastion";
 		/*****************************/
 		
 		spot = spot/60;

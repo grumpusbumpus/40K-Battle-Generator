@@ -5,8 +5,6 @@
  */
  window.globals = {};	//Necessary for accessing Paper components via JavaScript
  globals.density = new Array();	//	Tracking terrain density on the battlefield
- globals.density[0] = new Array();
- globals.density[1] = new Array();
  globals.game_size;	//	How large the game is, to determine battlefield size
  globals.terrain_array = new Array();	//	Array for tracking the location of terrain features present on the map
  var player_count;	//	The number of players in the game
@@ -26,7 +24,16 @@
 
 function test()
 {
+	// It's working
 	console.log("Test button pressed \n");
+	
+	// Testing new density array
+	for (var i = 0; i< globals.density.length; i++)
+	{
+		console.log(i + ": " + globals.density[i] + ", ");
+	}
+	
+	//	Testing sound
 	var snd_src = document.getElementById('sound').getAttribute('src');
 	var snd = new Audio(snd_src);
 	snd.play();
@@ -136,13 +143,15 @@ function step4(g_size)
 	if(globals.game_size < 2)
 	{
 		shrink_battlefield();
-		globals.density[0] = [0,0];
-		globals.density[1] = [0,0];
+		globals.density= new Array(4);
 	}
 	else
 	{
-		globals.density[0] = [0,0,0];
-		globals.density[1] = [0,0,0];
+		globals.density= new Array(6);
+	}
+	for(var i = 0; i < globals.density.length; i++)
+	{
+		globals.density[i] = 0;
 	}
 	if(globals.game_size == 0)
 	{
@@ -318,53 +327,9 @@ function step7(terrain)
 	show("step8");
 	
 	//Generate Terrain Density
-	for(var i = 0; i < 2; i++)
+	for(var i = 0; i < globals.density.length; i++)
 	{
-		if(globals.game_size < 2)
-		{
-			var height = 2;
-		}
-		else
-		{
-			var height = 3;
-		}
-		for (var j = 0; j < height; j++)
-		{
-			globals.density[i][j] += rollD3();
-		}
-	}
-	
-	//Draw Density Markers
-	for(var i = 0; i < 2; i++)
-	{
-		if(globals.game_size < 2)
-		{
-			var height = 2;
-		}
-		else
-		{
-			var height = 3;
-		}
-		for (var j = 0; j < height; j++)
-		{
-			var number = globals.density[i][j];
-			var x = (i*120)+60;
-			var y = (j*120)+60;
-			switch(number)
-			{
-				case 1:
-					globals.draw_terrain('density_1',x,y,0);
-					break;
-				case 2:
-					globals.draw_terrain('density_2',x,y,0);
-					break;
-				case 3:
-					globals.draw_terrain('density_3',x,y,0);
-					break;
-				default:
-					break;
-			}
-		}
+		globals.density[i] += rollD3();
 	}
  }
 
@@ -395,18 +360,9 @@ function clear_forts()
 	globals.fortClicks = 0;
 	globals.forts = new Array();
 	document.getElementById("fort_count").innerHTML = "0";
-	globals.density = new Array();	//	Tracking terrain density on the battlefield
-	globals.density[0] = new Array();
-	globals.density[1] = new Array();
-	if(globals.game_size < 2)
+	for(var i = 0; i < globals.density.length; i++)
 	{
-		globals.density[0] = [0,0];
-		globals.density[1] = [0,0];
-	}
-	else
-	{
-		globals.density[0] = [0,0,0];
-		globals.density[1] = [0,0,0];
+		globals.density[i] = 0;
 	}
 	init_terrain_array();
 }
@@ -427,7 +383,10 @@ function init_terrain_array()
 	{
 		globals.terrain_array = new Array(24);
 	}
-	
+	for(var i = 0; i < globals.terrain_array.length; i++)
+	{
+		globals.terrain_array[i] = 0;
+	}
 }
  
  
@@ -442,7 +401,8 @@ function init_terrain_array()
  *	TODO:	Step10
  *
  */
-
+ 
+ 
 /**
  *
  *	TODO:	Function to add tooltip to a piece of text
